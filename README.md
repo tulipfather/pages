@@ -15,6 +15,9 @@
 * **[📡 나이퀴스트 ADC & 주파수 폴딩](study/nyquist_folding.md)**  
   아날로그 신호를 샘플링할 때 왜곡을 일으키는 나이퀴스트 주파수 한계와 주파수 폴딩(Frequency Folding)의 원리를 수학적 수식과 실제 계산 사례로 설명합니다.
 
+* **[🎓 DSP 마스터 커리큘럼](study/dsp_curriculum.md)**  
+  디지털 신호처리(DSP) 입문부터 전문가 수준에 이르기까지, 하드웨어(PDM/DMIC/ADC/dBFS)와 알고리즘(DFT/FFT/임펄스/복소평면)을 아우르는 단계별 교육 설계 로드맵입니다.
+
 * **[📋 위키 구축 계획서](study/implementation_plan.md)**  
   본 Docsify 정적 위키 사이트를 구축하기 위한 구성 요소와 설계 내용입니다.
 
