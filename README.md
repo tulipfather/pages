@@ -9,17 +9,11 @@
 
 아래 주제들을 먼저 확인해 보세요:
 
-* **[🚀 GitHub Pages 구조 이해](study/github_pages.md)**  
-  GitHub Pages가 작동하는 아키텍처와 일반 리포지토리와의 차이점, 비공개 저장소 배포 관련 팁을 설명합니다.
-  
 * **[📡 나이퀴스트 ADC & 주파수 폴딩](study/nyquist_folding.md)**  
   아날로그 신호를 샘플링할 때 왜곡을 일으키는 나이퀴스트 주파수 한계와 주파수 폴딩(Frequency Folding)의 원리를 수학적 수식과 실제 계산 사례로 설명합니다.
 
 * **[🎓 DSP 마스터 커리큘럼](study/dsp_curriculum.md)**  
   디지털 신호처리(DSP) 입문부터 전문가 수준에 이르기까지, 하드웨어(PDM/DMIC/ADC/dBFS)와 알고리즘(DFT/FFT/임펄스/복소평면)을 아우르는 단계별 교육 설계 로드맵입니다.
-
-* **[📋 위키 구축 계획서](study/implementation_plan.md)**  
-  본 Docsify 정적 위키 사이트를 구축하기 위한 구성 요소와 설계 내용입니다.
 
 ---
 
@@ -31,7 +25,7 @@
    `study/` 또는 원하는 하위 디렉토리에 `.md` 확장자로 새로운 문서 파일을 만듭니다. (예: `study/my-new-topic.md`)
    
 2. **사이드바에 링크 추가:**  
-   [`_sidebar.md`](file:///mnt/e/ai/_sidebar.md) 파일을 열고, 새로 만든 문서의 상대 경로 링크를 추가합니다.
+   [`_sidebar.md`](file:///mnt/e/ai/pages/_sidebar.md) 파일을 열고, 새로 만든 문서의 상대 경로 링크를 추가합니다.
    ```markdown
    * [📝 새 주제 설명](study/my-new-topic.md)
    ```
