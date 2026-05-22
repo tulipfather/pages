@@ -196,7 +196,53 @@
         buttonText : '복사',
         errorText  : '에러',
         successText: '복사됨'
-      }
+      },
+
+      // Custom Plugins (GitHub Alert Syntax Support)
+      plugins: [
+        function(hook, vm) {
+          hook.afterEach(function(html, next) {
+            var alertTypes = {
+              'NOTE': { icon: 'ℹ️', title: 'Note', color: '#8ab4f8' },
+              'TIP': { icon: '💡', title: 'Tip', color: '#3ddc84' },
+              'IMPORTANT': { icon: '📢', title: 'Important', color: '#a855f7' },
+              'WARNING': { icon: '⚠️', title: 'Warning', color: '#f2994a' },
+              'CAUTION': { icon: '🛑', title: 'Caution', color: '#eb5757' }
+            };
+            
+            var parser = new DOMParser();
+            var doc = parser.parseFromString(html, 'text/html');
+            var blockquotes = doc.querySelectorAll('blockquote');
+            
+            blockquotes.forEach(function(bq) {
+              var content = bq.innerHTML;
+              var match = content.match(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i);
+              if (match) {
+                var typeKey = match[1].toUpperCase();
+                var alertInfo = alertTypes[typeKey];
+                
+                // Clean the [!TYPE] markup, including potential <br> or spaces after it
+                var cleanedContent = content.replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]\s*(<br>)?/i, '').trim();
+                
+                // Apply layout styles
+                bq.style.borderLeft = '4px solid ' + alertInfo.color;
+                bq.style.backgroundColor = '#1e1f22';
+                bq.style.padding = '16px';
+                bq.style.borderRadius = '0 8px 8px 0';
+                bq.style.margin = '1.5rem 0';
+                
+                bq.innerHTML = '<div style="display: flex; align-items: center; font-weight: 700; color: ' + alertInfo.color + '; margin-bottom: 8px; font-family: var(--heading-font-family);">' +
+                               '<span style="margin-right: 8px; font-size: 1.1rem; display: flex; align-items: center;">' + alertInfo.icon + '</span>' +
+                               '<span>' + alertInfo.title + '</span>' +
+                               '</div>' +
+                               '<div style="color: #e3e3e3;">' + cleanedContent + '</div>';
+              }
+            });
+            
+            next(doc.body.innerHTML);
+          });
+        }
+      ]
     }
   </script>
   <!-- Docsify v4 -->
@@ -216,7 +262,7 @@
           hook.doneEach(function() {
             MathJax.typesetPromise();
           });
-        }, window.$docsify.plugins);
+        }, window.$docsify.plugins || []);
       }
     });
   </script>
